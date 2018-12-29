@@ -32,21 +32,21 @@ describe('Интеграционные тесты', () => {
       cy.get('.t-input-firstname').type('неправильное имя');
       cy.get('.t-submit').click();
 
-      cy.get('.t-error-firstname').should('contain', 'Имя указано не верно');
+      cy.get('.t-error-firstname').should('contain', 'Имя указано неверно');
     });
 
     it('Показывает ошибку фамилии, если она введена не верно', () => {
       cy.get('.t-input-lastname').type('неправильная фамилия');
       cy.get('.t-submit').click();
 
-      cy.get('.t-error-lastname').should('contain', 'Фамилия указана не верно');
+      cy.get('.t-error-lastname').should('contain', 'Фамилия указана неверно');
     });
 
     it('Показывает ошибку фамилии, если она введена не верно', () => {
       cy.get('.t-input-password').type('неправильный пароль');
       cy.get('.t-submit').click();
 
-      cy.get('.t-error-password').should('contain', 'Пароль указан не верно');
+      cy.get('.t-error-password').should('contain', 'Пароль указан неверно');
     });
   });
 
