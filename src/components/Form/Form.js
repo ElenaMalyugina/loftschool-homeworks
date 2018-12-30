@@ -101,13 +101,14 @@ export default class Form extends React.Component{
         let keysFields = Object.keys(this.state.fields);
 
         let formFields=keysFields.map(el=>{
+            let alias= this.state.fields[el];
             
-            return  <p className="field" key={this.state.fields[el].name}>
-                        <label className="field__label" htmlFor={this.state.fields[el].name}>
-                            <span className="field-label">{this.state.fields[el].label}</span>
+            return  <p className="field" key={alias.name}>
+                        <label className="field__label" htmlFor={alias.name}>
+                            <span className="field-label">{alias.label}</span>
                         </label>
-                        <input className={`${'field__input field-input t-input-'}${this.state.fields[el].name}`} type={this.state.fields[el].type} name={this.state.fields[el].name} value={this.state.fields[el].value} onChange={this.changeInputHandler} onFocus={this.clearValidator}/>
-                        <span className={`${'field__error field-error t-error-'}${this.state.fields[el].name}`}>{this.state.fields[el].errorMessage}</span>
+                        <input className={`${'field__input field-input t-input-'}${alias.name}`} type={alias.type} name={alias.name} value={alias.value} onChange={this.changeInputHandler} onFocus={this.clearValidator}/>
+                        <span className={`${'field__error field-error t-error-'}${alias.name}`}>{alias.errorMessage}</span>
                     </p>
         })
     
