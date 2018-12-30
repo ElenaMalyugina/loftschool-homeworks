@@ -2,29 +2,15 @@ import React from 'react';
 import './Form.css';
 
 export default class Form extends React.Component{
-    fields= [
-        {
-            type: 'text',
-            name: 'firstname',
-            label:'Имя', 
-        },
-        {
-            type: 'text',
-            name: 'lastname',
-            label: 'Фамилия',
-        },
-        {
-            type: 'password',
-            name: 'password',
-            label: 'Пароль',         
-        }
-    ]
-
+   
     state = {
         isFormValid: false,
 
         fields:{
             firstname: {
+                type: 'text',
+                name: 'firstname',
+                label:'Имя', 
                 value: '',
                 isValid: true,
                 errorMessage: '',
@@ -34,6 +20,9 @@ export default class Form extends React.Component{
 
             },
             lastname: {
+                type: 'text',
+                name: 'lastname',
+                label: 'Фамилия',
                 value: '',
                 isValid: true,
                 errorMessage: '',
@@ -42,6 +31,9 @@ export default class Form extends React.Component{
                 correctValue: 'bond'
             },
             password: {
+                type: 'password',
+                name: 'password',
+                label: 'Пароль',      
                 value: '',
                 isValid: true,
                 errorMessage: '',
@@ -100,21 +92,22 @@ export default class Form extends React.Component{
             this.setState((prevstate)=>{
                 prevstate.fields[el].isValid = true;
                 prevstate.fields[el].errorMessage= ''
-                    return prevstate;
+                return prevstate;
             });
         });
     }
 
     render(){
-        let formFields=this.fields.map(el=>{
-            let val= this.state.fields[el.name].value;
+        let keysFields = Object.keys(this.state.fields);
 
-            return  <p className="field" key={el.name}>
-                        <label className="field__label" htmlFor={el.name}>
-                            <span className="field-label">{el.label}</span>
+        let formFields=keysFields.map(el=>{
+            
+            return  <p className="field" key={this.state.fields[el].name}>
+                        <label className="field__label" htmlFor={this.state.fields[el].name}>
+                            <span className="field-label">{this.state.fields[el].label}</span>
                         </label>
-                        <input className={`${'field__input field-input t-input-'}${el.name}`} type={el.type} name={el.name} value={val} onChange={this.changeInputHandler} onFocus={this.clearValidator}/>
-                        <span className={`${'field__error field-error t-error-'}${el.name}`}>{this.state.fields[el.name].errorMessage}</span>
+                        <input className={`${'field__input field-input t-input-'}${this.state.fields[el].name}`} type={this.state.fields[el].type} name={this.state.fields[el].name} value={this.state.fields[el].value} onChange={this.changeInputHandler} onFocus={this.clearValidator}/>
+                        <span className={`${'field__error field-error t-error-'}${this.state.fields[el].name}`}>{this.state.fields[el].errorMessage}</span>
                     </p>
         })
     
