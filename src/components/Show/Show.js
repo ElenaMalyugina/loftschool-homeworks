@@ -1,7 +1,7 @@
 import React from 'react';
 import './Show.css';
 
-export default class Show extends React.PureComponent{  
+export default class Show extends React.Component{  
 
     state={
         showId: '',
