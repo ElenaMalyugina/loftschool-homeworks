@@ -2,7 +2,7 @@ import React from 'react';
 import './Show.css';
 
 export default class Show extends React.Component{  
-
+    /*можно обойтись без state.showId, остаавлено дял тестов, непонятно, зачем предполагаются лишние движения */
     state={
         showId: '',
         data: null
@@ -33,25 +33,12 @@ export default class Show extends React.Component{
     }
 
     
-    componentDidUpdate(){
-        if(this.state.data ==null){
-            this.getFilmData(this.state.showId)
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.showId!== this.props.showId){
+            this.getFilmData(this.props.showId)
                 .then(data=> data.json())
                 .then((data)=>this.setState({data: data}))
-                
-        }        
-    }
-
-
-    static getDerivedStateFromProps(props, state){        
-        if(props.showId!== state.showId){
-            return {
-                data: null,
-                showId: props.showId                
-            }
         }
-        
-        return null;
     }
 
 
