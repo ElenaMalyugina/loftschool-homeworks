@@ -8,31 +8,37 @@ export default class Show extends React.Component{
         data: null
     }
 
+    getFilmData(id){
+        let urlId;
+
+        switch(id){
+            case 'house' : 
+                urlId= 118;
+                break;
+            case 'santaBarbara' : 
+                urlId= 5909;
+                break;   
+            case 'bigBang' : 
+                urlId= 66;
+                break;
+            default :
+                urlId= 0;         
+        }
+
+        let url = 'http://api.tvmaze.com/shows/'+urlId;
+
+        let p = fetch(url);
+
+        return p;
+    }
+
     
     componentDidUpdate(){
         if(this.state.data ==null){
-            let urlId;
-
-            switch(this.props.showId){
-                case 'house' : 
-                    urlId= 118;
-                    break;
-                case 'santaBarbara' : 
-                    urlId= 5909;
-                    break;   
-                case 'bigBang' : 
-                    urlId= 66;
-                    break;     
-            }
-
-            let url = 'http://api.tvmaze.com/shows/'+urlId;
-
-            let p = fetch(url);
-
-            p.then(resp=>resp.json())
-            .then(data=> {
-               this.setState({data: data})
-            }) 
+            this.getFilmData(this.state.showId)
+                .then(data=> data.json())
+                .then((data)=>this.setState({data: data}))
+                
         }        
     }
 
@@ -50,16 +56,18 @@ export default class Show extends React.Component{
 
 
     render(){
-        return  this.state.data ? 
-                    <div className="show">
-                        <img className="show-image" src={this.state.data.image.medium}/>
-                        <h2 className="show-label t-show-name">{this.state.data.name}</h2>
-                        <p className="show-text t-show-genre"><strong>Жанр: </strong>{this.state.data.genres.join(', ')}</p>
-                        <p className="show-text t-show-summary" dangerouslySetInnerHTML={{__html: this.state.data.summary}}></p>            
+        if(this.state.data){
+            let {image, name, genres, summary} = this.state.data;
+
+            return  <div className="show">
+                        <img className="show-image" src={image.medium} alt="film"/>
+                        <h2 className="show-label t-show-name">{name}</h2>
+                        <p className="show-text t-show-genre"><strong>Жанр: </strong>{genres.join(', ')}</p>
+                        <p className="show-text t-show-summary" dangerouslySetInnerHTML={{__html: summary}}></p>            
                     </div>
-                    : 
-                    <p>Шоу не выбрано</p>
-
-
+        }
+        else{             
+            return <p className="show-text t-show-info">Шоу не выбрано</p>
+        }
     }
 }
