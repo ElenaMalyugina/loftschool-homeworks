@@ -17,9 +17,6 @@ describe('Приложение написано с использованием 
   });
 
   describe('Компонент НЕ содержит', () => {
-    it('Статичный метод getDerivedStateFromProps', () => {
-      expect(Show.getDerivedStateFromProps).toBeUndefined();
-    });
     it('Метод componentDidMount', () => {
       expect(wrapper.instance().componentDidMount).toBeUndefined();
     });
