@@ -8,7 +8,7 @@ import { AuthProvider, AuthConsumer } from '../../contexts/Auth';
 
 class App extends PureComponent {
   render() {
-    return (
+    return (      
       <AuthProvider>
         <Layout header={Header} footer={Footer}>
           <AuthConsumer>

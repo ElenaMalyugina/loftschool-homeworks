@@ -4,15 +4,25 @@ import './Layout.css';
 
 class Layout extends PureComponent {
   render() {
-    return 'empty';
+    return  <Fragment>
+              {this.renderHeader(this.props.header)}
+                <main className="main main--with-header main--with-footer">
+                  {this.props.children}
+                </main>
+              {this.renderFooter(this.props.footer)}
+            </Fragment>;
   }
 
-  renderHeader(HeaderChild) {
-    return 'empty';
+  renderHeader(HeaderChild) {  
+    let child=(<SectionTitle className="header__title" children='Header' />);
+       
+    return <HeaderChild children={child}/>;
   }
 
   renderFooter(FooterChild) {
-    return 'empty';
+    return <FooterChild 
+            children={<SectionTitle className="header__title" children='Footer'/>}             
+          />;    
   }
 }
 
