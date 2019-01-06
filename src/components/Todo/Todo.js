@@ -77,7 +77,7 @@ class Todo extends PureComponent {
     let{id, text, isCompleted} = record;
     return <div className="todo-item t-todo" key={id}>
               <p className="todo-item__text">{text}</p>
-              <span className="todo-item__flag t-todo-complete-flag" data-todo-id={id} onClick={this.toggleRecordComplete}>{isCompleted ? '[0]': '[x]'}</span>
+              <span className="todo-item__flag t-todo-complete-flag" data-todo-id={id} onClick={this.toggleRecordComplete}>{isCompleted ? '[x]': '[0]'}</span>
           </div>;
   };
 }
