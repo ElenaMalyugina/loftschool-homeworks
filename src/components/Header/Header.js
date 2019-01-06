@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { AuthConsumer } from '../../contexts/Auth';
 import Button from '../Button';
 import './Header.css';
@@ -10,16 +10,14 @@ class Header extends PureComponent {
     return  <AuthConsumer>
               {({isAuthorized, email, logout})=>
                 <header className="header">                  
-                  {isAuthorized ? 
-                    <Fragment>
                     {children}
-                    <div className="header__content">
-                      <div className="header-menu">
-                        <p className="header-menu__email header-email t-header-email">{email}</p>
-                        <Button children="Выйти" onClick={logout} className="t-logout"/>
-                      </div>  
-                    </div> 
-                    </Fragment>
+                    {isAuthorized ? 
+                      <div className="header__content">
+                        <div className="header-menu">
+                          <p className="header-menu__email header-email t-header-email">{email}</p>
+                          <Button children="Выйти" onClick={logout} className="t-logout"/>
+                        </div>  
+                      </div> 
                     : ''} 
                 </header>}
             </AuthConsumer>

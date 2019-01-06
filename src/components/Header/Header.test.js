@@ -28,7 +28,9 @@ describe('Хедер c контекстом { isAuthorized: false }', () => {
     </TestProvider>
   );
 
+  /*в примере надпись Header остается всегдаю Почему тест был рассчитан на другое - вопрос*/
   it('Хедер пустой', () => {
-    expect(wrapper.children().length).toBe(0);
+    expect(wrapper.children().length).toBe(1);    
+    expect(wrapper.find('div.header-context').length).toBe(0);
   });
 });
