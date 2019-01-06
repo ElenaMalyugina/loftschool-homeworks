@@ -6,45 +6,40 @@ class AuthProvider extends PureComponent {
   state={
     email: '',
     authorizeError: '',
-    isAuthorized: false,
-    authorize: this.authorize.bind(this), 
-    logout: this.logout.bind(this)
+    isAuthorized: false   
   }
   
     
-  authorize(email, password){   
-    debugger;
-      if(email === 'stu@dent.com' && password==='123'){
-        this.setState({
-          isAuthorized: true,
-          email: email,
-          authorizeError: ''
-        });
-      }
-      else{
-        this.setState({authorizeError: 'Email или пароль введён не верно'})
-      }    
+  authorize=(email, password)=>{     
+    if(email === 'stu@dent.com' && password==='123'){
+      this.setState({
+        isAuthorized: true,
+        email: email,
+        authorizeError: ''
+      });
+    }
+    else{
+      this.setState({authorizeError: 'Email или пароль введён не верно'})
+    }    
   } 
   
-  logout(){
+  logout=()=>{
     this.setState({isAuthorized: false})
   }
 
-  getProviderValue(){
-    debugger;
+  getProviderValue=()=>{
     return {
-      email: '', 
-      isAuthorized: false, 
-      authorizeError: '', 
+      email: this.state.email, 
+      isAuthorized: this.state.isAuthorized, 
+      authorizeError: this.state.authorizeError, 
       authorize: this.authorize, 
       logout: this.logout
     }
-
   }
 
   render() {
     const { children } = this.props;
-    return <Provider value={this.state}>{children}</Provider>;
+    return <Provider value={this.getProviderValue()}>{children}</Provider>;
   }
 }
 

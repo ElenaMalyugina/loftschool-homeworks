@@ -49,7 +49,7 @@ describe('Лэйаут c пропсом header', () => {
           .includes('main--with-footer')
       ).toBeFalsy();
     });
-  }, 5);  
+  }, 1);  
 });
 
 describe('Лэйаут c пропсом footer', () => {
@@ -75,5 +75,5 @@ describe('Лэйаут c пропсом footer', () => {
           .includes('main--with-footer')
       ).toBeTruthy();
     });
-  }, 5);  
+  }, 1);  
 });

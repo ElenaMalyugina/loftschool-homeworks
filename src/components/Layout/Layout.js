@@ -9,30 +9,24 @@ class Layout extends PureComponent {
   }
 
   componentDidMount(){
-    if(this.props.header){
-      this.setState({classWithHeader: 'main--with-header'});
-    }
-    else{
-      this.setState({classWithHeader: ''});
-    }
-
-    if(this.props.footer){
-      this.setState({classWithFooter: 'main--with-footer'})
-    }
-    else{
-      this.setState({classWithFooter: ''});
-    }
+    const{header, footer} = this.props;    
+    header && this.setState({classWithHeader: 'main--with-header'});  
+    footer && this.setState({classWithFooter: 'main--with-footer'});
+   
   }
 
   /*DidUpdate?*/
   
   render() {
+    const{header, footer, children} = this.props;  
+    const{classWithHeader, classWithFooter} = this.state;
+
     return  <Fragment>
-              {this.renderHeader(this.props.header)}
-              <main className={`${'main'} ${this.state.classWithHeader} ${this.state.classWithFooter}`}>
-                {this.props.children}
+              {this.renderHeader(header)}
+              <main className={`${'main'} ${classWithHeader} ${classWithFooter}`}>
+                {children}
               </main>
-              {this.renderFooter(this.props.footer)}
+              {this.renderFooter(footer)}
             </Fragment>;
   }
 
