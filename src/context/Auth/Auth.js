@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 const { Provider, Consumer } = React.createContext('');
 
 class AuthProvider extends Component {
@@ -10,6 +11,10 @@ class AuthProvider extends Component {
     authError: ''
   };
 
+  logout=()=>{
+    this.setState({ isAuthorized: false, authError: ''})
+  }
+
   authorize = (email, password) => {
     if (email === this.email && password === this.password) {
       this.setState({ isAuthorized: true, authError: '' });
@@ -20,7 +25,7 @@ class AuthProvider extends Component {
 
   getProviderValue = () => {
     const { isAuthorized, authError } = this.state;
-    return { isAuthorized, authorize: this.authorize, authError };
+    return { isAuthorized, authorize: this.authorize, authError, logout: this.logout };
   };
 
   render() {
@@ -33,7 +38,7 @@ const withAuth = WrappedComponent => {
   class AuthHOC extends Component {
     render() {
       const { ...rest } = this.props;
-      return (
+      return (        
         <Consumer>
           {contextProps => <WrappedComponent {...contextProps} {...rest} />}
         </Consumer>
