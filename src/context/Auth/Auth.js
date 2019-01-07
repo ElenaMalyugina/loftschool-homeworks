@@ -12,7 +12,7 @@ class AuthProvider extends Component {
   };
 
   logout=()=>{
-    this.setState({ isAuthorized: false, authError: ''})
+    this.setState({ isAuthorized: false})
   }
 
   authorize = (email, password) => {
