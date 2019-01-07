@@ -5,9 +5,7 @@ import {withData} from '../../context/Data/Data';
 class Inboxlist extends Component{
 
     render(){
-        console.log(this.props);
-
-        return <MailList data={this.props.data.inbox}/>
+        return <MailList data={this.props.data.inbox} match={this.props.match.url} type="inbox"/>
     }
 }
 

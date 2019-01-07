@@ -28,7 +28,7 @@ class LoginForm extends React.Component{
 
     render(){
         return  <div className={styles.bg}>
-                    <div className={styles.form}>
+                    <div className={`${styles.form} ${'t-form'}`}>
                         <p>
                             <label htmlFor="email">
                                 <span className={styles.labelText}>Почта</span>
