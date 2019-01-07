@@ -2,6 +2,8 @@ import React from 'react';
 import * as styles from './AppRouter.module.css';
 import {Route, NavLink} from 'react-router-dom'
 import Home from '../Home/Home';
+import InboxList from '../InboxList/InboxList';
+import OutboxList from '../OutboxList/OutboxList';
 
 export default class AppComponent extends React.Component{
     state={
@@ -48,8 +50,8 @@ export default class AppComponent extends React.Component{
                         <div className={styles.content}>
                             <h3 className={styles.title}>{this.state.sectionName}</h3>
                             <Route path={this.props.match.url} exact component={Home}/>
-                            <Route path={this.props.match.url + '/inbox'} component={Home}/>
-                            <Route path={this.props.match.url + '/outbox'} component={Home}/>
+                            <Route path={this.props.match.url + '/inbox'} component={InboxList}/>
+                            <Route path={this.props.match.url + '/outbox'} component={OutboxList}/>
                         </div>
                     
                     </div>
