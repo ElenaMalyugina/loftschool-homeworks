@@ -4,14 +4,16 @@ import * as styles from './Mail.module.css';
 export default class Mail extends React.Component{
 
     render(){
-       
+       let{type, body}=this.props;
+      
         return <div className={styles.container}>
-                    <p className={"t-mail-" + this.props.type}>
-                        {this.props.type}: &nbsp; 
-                        <strong>{this.props[this.props.type]}</strong>
+                    <p className={"t-mail-" + type}>
+                        {type}: &nbsp; 
+                        <strong>{type}</strong>
                     </p>
-                    <p className="t-mail-body">{this.props.body}</p>
-                    
-                </div>
+                    <p className="t-mail-body">{body}</p>   
+                                  
+                </div>                 
+                
     }
 }
