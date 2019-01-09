@@ -1,4 +1,5 @@
 import React from 'react';
+import {getShowInfo} from '../../api.js';
 import './Show.css';
 
 function Show(WrappedComponent){
@@ -8,35 +9,12 @@ function Show(WrappedComponent){
             data: null
         }
     
-        getFilmData(id){
-            let urlId;
-    
-            switch(id){
-                case 'house' : 
-                    urlId= 118;
-                    break;
-                case 'santaBarbara' : 
-                    urlId= 5909;
-                    break;   
-                case 'bigBang' : 
-                    urlId= 66;
-                    break;
-                default :
-                    urlId= 0;         
-            }
-    
-            let url = 'http://api.tvmaze.com/shows/'+urlId;
-    
-            let p = fetch(url);
-    
-            return p;        
-        }
+        
     
     
         componentDidMount(){
             if(this.props.showId){
-                this.getFilmData(this.props.showId)
-                    .then(data=> data.json())
+                getShowInfo(this.props.showId)
                     .then((data)=>this.setState({data: data}))
                     .catch(e=>this.setState({data: null}))
             }
