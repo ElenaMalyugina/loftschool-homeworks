@@ -1,4 +1,5 @@
 import React from 'react';
+import {getShowInfo} from '../../api.js';
 import './Show.css';
 
 export default class Show extends React.Component{  
@@ -8,35 +9,11 @@ export default class Show extends React.Component{
         data: null
     }
 
-    getFilmData(id){
-        let urlId;
-
-        switch(id){
-            case 'house' : 
-                urlId= 118;
-                break;
-            case 'santaBarbara' : 
-                urlId= 5909;
-                break;   
-            case 'bigBang' : 
-                urlId= 66;
-                break;
-            default :
-                urlId= 0;         
-        }
-
-        let url = 'http://api.tvmaze.com/shows/'+urlId;
-
-        let p = fetch(url);
-
-        return p;
-    }
 
     
     componentDidUpdate(){
         if(this.state.data ==null){
-            this.getFilmData(this.state.showId)
-                .then(data=> data.json())
+            getShowInfo(this.state.showId)
                 .then((data)=>this.setState({data: data}))
                 
         }        
@@ -47,7 +24,7 @@ export default class Show extends React.Component{
         if(props.showId!== state.showId){
             return {
                 data: null,
-                showId: props.showId                
+                showId: props.showId      
             }
         }
         
