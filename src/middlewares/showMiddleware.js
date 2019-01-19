@@ -5,3 +5,6 @@
 // В случае ошибки showSuccess
 
 // На забудьте вызвать метод next.
+const showMiddleware = store => next => action => {
+    return next(action);
+   };
