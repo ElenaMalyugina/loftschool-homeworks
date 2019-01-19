@@ -34,7 +34,9 @@ class Search extends React.Component{
                             <button className={`${styles.button} t-search-button`} onClick={this.searchHandler}>Найти</button>
                         </div>                    
                     </div>
+                    <div className="t-search-result">
                     {previews}
+                    </div>
                 </div>
                 
     }
