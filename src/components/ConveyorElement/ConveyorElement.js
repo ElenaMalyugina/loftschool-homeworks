@@ -60,7 +60,7 @@ class ConveyorElement extends PureComponent {
 
 export default connect(
   (state, props) => ({
-    orders: getOrdersFor(state, props.name)
+    orders: getOrdersFor(state, props.name)    
   }),
   {
     addIngredient,

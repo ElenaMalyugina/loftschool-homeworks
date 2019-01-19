@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import styles from './Order.module.css';
 import Emojis from 'react-emoji-component';
 import ingredients from '../../ingredients';
 import cx from 'classnames';
 
-class Order extends PureComponent {
+class Order extends Component {
   static defaultProps = {
     recipe: []
   };
@@ -14,7 +14,7 @@ class Order extends PureComponent {
 
   render() {
     const { recipe, ingredients } = this.props;
-
+    //debugger;
     return (
       <div className={cx('t-pizza', styles.root)}>
         {recipe.map(ingredient => (
