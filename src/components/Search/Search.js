@@ -25,10 +25,13 @@ class Search extends React.Component{
     }
 
     render(){
-        let {previews} = this.props.search;
+        let {previews, isLoading} = this.props.search;
         let previewsRender = previews.map(el=> <ShowPreview key={el.id} data={el}/>);       
-
-        return  <div>
+        
+        return  isLoading?
+                'Загрузка'
+                :
+                <div>
                     <div className={styles.previewList}>
                         <input onChange={this.inputHandler} className={`${styles.input} t-input`} placeholder="Название сериала"/>
                         <div className={styles.buttonWrapper}>

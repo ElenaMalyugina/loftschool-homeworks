@@ -21,9 +21,11 @@ class ShowPage extends React.Component{
     }
 
     render(){   
-        let {showPage} = this.props.shows;       
-        if(showPage){
-           
+        let {showPage, isloading} = this.props.shows;   
+        if(isloading){
+            return 'Загрузка...';
+        }    
+        if(showPage){           
             let {name, image, summary, _embedded} = showPage;
             
             let persons= _embedded ? _embedded.cast.map(el=> <div className="t-person" key={el.person.id}>
@@ -48,7 +50,7 @@ class ShowPage extends React.Component{
                     </div>
             }
 
-            else return 'Загрузка...'
+            else return 'Загрузка...';
         }
         
 }
