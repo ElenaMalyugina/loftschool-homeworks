@@ -5,12 +5,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Search from '../Search/Search';
 import './AppRouter.css';
+import ShowPage from '../ShowPage/ShowPage';
 
 export const AppRouter =()=>(
     <div className="App">
     <Switch>
         <Route exact path="/" component= {Search} />
-        {/*<Route exact path="/shows/" component= {Home} />*/}
+        <Route exact path="/shows/:id" component= {ShowPage} />}
     </Switch>
     </div>
 )

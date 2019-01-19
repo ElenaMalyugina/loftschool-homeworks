@@ -1,4 +1,3 @@
-import React from 'react'
 import { createStore, compose, applyMiddleware } from 'redux';
 import combineReducers from "./reducers";
 import {searchMiddleware} from "./middlewares/searchMiddleware";
