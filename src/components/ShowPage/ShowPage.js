@@ -20,10 +20,11 @@ class ShowPage extends React.Component{
         this.props.showRequest(id);
     }
 
-    render(){          
-        if(this.props.shows.showPage){
+    render(){   
+        let {showPage} = this.props.shows;       
+        if(showPage){
            
-            let {name, image, summary, _embedded} = this.props.shows.showPage;
+            let {name, image, summary, _embedded} = showPage;
             
             let persons= _embedded ? _embedded.cast.map(el=> <div className="t-person" key={el.person.id}>
                                                             <p>{el.person.name}</p>

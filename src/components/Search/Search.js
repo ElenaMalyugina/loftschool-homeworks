@@ -25,7 +25,8 @@ class Search extends React.Component{
     }
 
     render(){
-        let previews = this.props.search.previews.map(el=> <ShowPreview key={el.id} data={el}/>);       
+        let {previews} = this.props.search;
+        let previewsRender = previews.map(el=> <ShowPreview key={el.id} data={el}/>);       
 
         return  <div>
                     <div className={styles.previewList}>
@@ -35,7 +36,7 @@ class Search extends React.Component{
                         </div>                    
                     </div>
                     <div className="t-search-result">
-                    {previews}
+                    {previewsRender}
                     </div>
                 </div>
                 

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 describe('Компонент ShowPreview', () => {
   const wrapper = shallow(
     <ShowPreview
-      {...{
+      data={{
         image: 'test',
         name: 'test_name',
         id: '123',
@@ -22,7 +22,7 @@ describe('Компонент ShowPreview', () => {
       it('Если props.iamge == null не должно быть тега img', () => {
         const wrapper = shallow(
           <ShowPreview
-            {...{
+            data={{
               image: null,
               name: 'test_name',
               id: '123',
