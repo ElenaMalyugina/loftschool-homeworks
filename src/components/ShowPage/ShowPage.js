@@ -15,19 +15,21 @@ class ShowPage extends React.Component{
         searchString: ''
     }
 
-    componentDidMount(){        
+    componentDidMount(){               
         const { id } = this.props.match.params;
         this.props.showRequest(id);
     }
 
-    render(){           
+    render(){          
+        if(this.props.shows.showPage){
+           
             let {name, image, summary, _embedded} = this.props.shows.showPage;
             
             let persons= _embedded ? _embedded.cast.map(el=> <div className="t-person" key={el.person.id}>
                                                             <p>{el.person.name}</p>
                                                             <img src={el.person.image.medium} alt={el.person.name}/>
                                                         </div> 
-                                                  ): '';      
+                                                  ): '';     
                                                        
             return <div>
                         <p>{name}</p>
@@ -44,6 +46,10 @@ class ShowPage extends React.Component{
                         </div>
                     </div>
             }
+
+            else return 'Загрузка...'
+        }
+        
 }
 
 const mapStateToProps = state => state;
